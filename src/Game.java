@@ -19,26 +19,6 @@ public class Game extends Application {
     Cell cell = new Cell();
     Button button = new Button("Play Again");
 
-    private Game() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                Random randomGenerator = new Random();
-                int r = randomGenerator.nextInt(2);
-
-                if (r == 0) {
-                    cell.setAlive(false);
-                } else {
-                    cell.setAlive(true);
-                }
-                world[i][j] = cell;
-
-                System.out.println(r);
-            }
-        }
-    }
-    public static Game intialize() {
-        return new Game();
-    }
     @Override
     public void start(Stage primaryStage){
         VBox root = new VBox();
@@ -57,7 +37,6 @@ public class Game extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        Game World = Game.intialize();
         draw();
 
     }
@@ -72,15 +51,15 @@ public class Game extends Application {
         graphics.fillRect(0,0,400,400);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-//                Random randomGenerator = new Random();
-//                int r = randomGenerator.nextInt(2);
-//
-//                if (r == 0) {
-//                    cell.setAlive(false);
-//                } else {
-//                    cell.setAlive(true);
-//                }
-//                world[i][j] = cell;
+                Random randomGenerator = new Random();
+                int r = randomGenerator.nextInt(2);
+
+                if (r == 0) {
+                    cell.setAlive(false);
+                } else {
+                    cell.setAlive(true);
+                }
+                world[i][j] = cell;
                 if (world[i][j].alive){
                     graphics.setFill(Color.BLACK);
                     graphics.fillRect(i,j,1,1);
